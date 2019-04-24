@@ -7,13 +7,17 @@ class Person
     @happiness
   end
 
-  def happiness=(num)
+  def clamp(num)
     if num > 10
       num  = 10
     elsif num < 0
       num = 0
     end
-    @happiness = num
+    num
+  end
+
+  def happiness=(num)
+    @happiness = clamp(num)
   end
 
   def hygiene
@@ -21,12 +25,7 @@ class Person
   end
 
   def hygiene=(num)
-    if num > 10
-      num  = 10
-    elsif num < 0
-      num = 0
-    end
-    @hygiene = num
+    @hygiene = clamp(num)
   end
   
   def initialize(name)
